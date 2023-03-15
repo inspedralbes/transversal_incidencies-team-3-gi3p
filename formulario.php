@@ -14,7 +14,7 @@
                     
                     <?php
                      include_once "conexion.php";
-                    echo "hola";
+
                     $sentencia = $mysqli->query("SELECT idDep, nom FROM DEPARTAMENT");
                     $departaments = $sentencia->fetch_all(MYSQLI_ASSOC);
                 
