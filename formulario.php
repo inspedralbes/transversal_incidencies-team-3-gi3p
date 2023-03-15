@@ -11,9 +11,10 @@
             <div class="form-group">
                 <label for="clase">Departament</label>
                 <select name="clase" id="clase">
+                    
                     <?php
                      include_once "conexion.php";
-
+                    echo "hola";
                     $sentencia = $mysqli->query("SELECT idDep, nom FROM DEPARTAMENT");
                     $departaments = $sentencia->fetch_all(MYSQLI_ASSOC);
                 
