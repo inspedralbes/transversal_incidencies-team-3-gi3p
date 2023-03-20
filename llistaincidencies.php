@@ -29,7 +29,13 @@
             <p class="campIncidenciaId"><?php echo $incidencia["idInc"] ?></p>
             <p class="campIncidenciaDep"><?php echo $incidencia["departament"] ?></p>
             <p class="campIncidenciaDescripcio"><?php echo $incidencia["descripcio"] ?></p>
-            <p class="campIncidenciaPrio"><?php echo $incidencia["prioritat"] ?></p>
+            <p class="campIncidenciaPrio"><?php
+            if(empty($incidencia["prioritat"])){
+                echo "Sense assignar";
+            } else{
+                echo $incidencia["prioritat"] ;
+            } 
+            ?></p>
             <p class="campIncidenciaData"><?php echo $incidencia["data"] ?></p>
             <p class="campIncidenciaTecnic"><?php 
             
@@ -38,11 +44,8 @@
             } else {
                 echo $incidencia["tecnic"];
             } 
-
             ?> </p>
             <a class="botoEditar" href="editar.php?idInc=<?php echo $incidencia["idInc"] ?>">Editar</a>
-
-
         </div>
 
         <?php } ?>
