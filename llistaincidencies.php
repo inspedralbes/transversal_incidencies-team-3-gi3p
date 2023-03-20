@@ -19,7 +19,7 @@
         </div>
         <?php
         $mysqli = include_once "conexion.php";
-        $resultado = $mysqli->query("SELECT idInc, descripcio, prioritat, DEPARTAMENT.nom as departament , CAST(INCIDENCIA.data AS date) AS data, TECNIC.nom as tecnic FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN TECNIC ON TECNIC.idTec = INCIDENCIA.tecnic WHERE INCIDENCIA.dataFi IS NULL ORDER BY idInc");
+        $resultado = $mysqli->query("SELECT idInc, descripcio, prioritat, DEPARTAMENT.nom as departament , CAST(INCIDENCIA.data AS date) AS data, USUARIO.nombre as tecnic FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE INCIDENCIA.dataFi IS NULL ORDER BY idInc");
         $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
         
         foreach ($incidencies as $incidencia) { ?>
