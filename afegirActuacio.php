@@ -8,39 +8,49 @@
     <title>Document</title>
 </head>
 <?php
-$host = "localhost";
-$usuario = "a22lorcrinor_bd";
-$contrasenia = "InsPedralbes2022";
-$base_de_datos = "a22lorcrinor_incidencies";
+$idTecnic=$_GET["tecnic"];
+include_once "conexion.php";
 $mysqli = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
 if ($mysqli->connect_errno) {
     echo "Falló la conexión a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 $resultado = $mysqli->query("SELECT idDep, nom FROM DEPARTAMENT");
 $DEPARTAMENT = $resultado->fetch_all(MYSQLI_ASSOC);
-$resultado2 = $mysqli->query("SELECT idInc FROM INCIDENCIA");
+$resultado2 = $mysqli->query("SELECT idInc FROM INCIDENCIA Where tecnic=$idTecnic");
 $incidenciaid = $resultado2->fetch_all(MYSQLI_ASSOC);
 ?>
 <body>
-    <form action="registrarActuacio">
-        <select name="departament" id="departament" required class="form-control">
-            <?php foreach($DEPARTAMENT as $departament){?>
-                <option value="<?php echo $departament["idDep"]?>"><?php echo $departament["nom"]?></option>
-            <?php } ?>
-        </select>
-                
-        <select>
+    <form action="registrarActuacio.php" method="POST">
+       
+
+        <select name="idincidencia" id="idincidencia" required class="form-select">
             <?php foreach($incidenciaid as $incidencia){?>
-                    <option value="<?php echo $incidencia["idInc"]?>"><?php echo $departament["idInc"]?></option>
+                    <option value="<?php echo $incidencia["idInc"]?>"><?php echo $incidencia["idInc"]?></option>
                 <?php }?>
         </select>
+        <label>Descripció de l'actuació</label>
+        <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" maxlength="500" required></textarea>
+        <div class="form-group">
+        <label for="temps">Temps</label>
+        <input type="text" class="form-control" name="temps" id="temps"></input>
+        </div>
         <fieldset>
             <legend>Estat de la incidencia</legend>
             <div>
-                <input type="checkbox" id="completada" name="completada">
-                <label for="completada">Completada</label>
+                <div class="form-check">
+                    <input type="checkbox" id="completada" name="completada"class="form-check-input" value=1>
+                    <label for="completada" class="form-check-label">Completada</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="visible" name="visible" class="form-check-input" value=1>
+                    <label for="visible" class="form-check-label">Visible per l'usuari</label>
+                </div>
             </div>
         </fieldset>
+        <div class="form-group">
+            <button class="btn btn-success">Guardar</button>
+            <a class="btn btn-warning" href="selectTecnico.php">Volver</a>
+        </div>
     </form>
 </body>
 </html>
