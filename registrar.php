@@ -3,11 +3,10 @@
 $mysqli = include_once "conexion.php";
 $clase = $_POST["clase"];
 $descripcion = $_POST["descripcion"];
-$prioridad = $_POST["prioridad"];
 $sentencia = $mysqli->prepare("INSERT INTO INCIDENCIA
-(departament, descripcio, prioritat)
+(departament, descripcio)
 VALUES
-(?, ?, ?)");
-$sentencia->bind_param("sss", $clase, $descripcion, $prioridad);
+(?, ?)");
+$sentencia->bind_param("ss", $clase, $descripcion);
 $sentencia->execute();
 header("Location: llistaincidencies.php");
