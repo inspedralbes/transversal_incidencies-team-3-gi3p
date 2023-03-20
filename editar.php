@@ -34,12 +34,12 @@ if (!$incidencia) {
             <label for="tecnic">Tècnic</label>
             <select name="tecnic" id="tecnic">
             <?php
-            $sentenciaTecnic = $mysqli->query("SELECT idTec, nom FROM TECNIC");
+            $sentenciaTecnic = $mysqli->query("SELECT id_User, nombre FROM USUARIO WHERE tipo_User=2");
             $tecnics = $sentenciaTecnic->fetch_all(MYSQLI_ASSOC);
 
             foreach ($tecnics as $tecnic){ ?> 
                     
-                    <option <?php if ($tecnic["idTec"] == $incidencia["tecnic"]) echo('selected') ?>  value="<?php echo $tecnic["idTec"]?>"> <?php echo $tecnic["nom"];?> </option> 
+                    <option <?php if ($tecnic["id_User"] == $incidencia["tecnic"]) echo('selected') ?>  value="<?php echo $tecnic["id_User"]?>"> <?php echo $tecnic["nombre"];?> </option> 
             <?php                    
             }
              ?>
