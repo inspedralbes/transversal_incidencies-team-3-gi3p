@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <?php include_once "encabezado.php"; ?>
+    <title>Formulario de incidencia </title>
 </head>
 <body>
+<div class="main">
 <div class="row">
     <div class="col-12">
         <h1>Registrar incidencia</h1>
@@ -38,6 +40,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 </body>
 </html>

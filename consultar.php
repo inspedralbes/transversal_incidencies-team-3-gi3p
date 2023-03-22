@@ -1,5 +1,14 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php include_once "encabezado.php"; ?>
+    <title>Consulta de incidencia</title>
+</head>
+<body>
+
+
 <?php
-include_once "encabezado.php";
 $mysqli = include_once "conexion.php";
 $id = $_GET["idInc"];
 $sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus,dataFi, DEPARTAMENT.nom, CONCAT(USUARIO.nombre,' ',USUARIO.pApellido,' ',USUARIO.sApellido) as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE idInc = ?");
@@ -72,3 +81,6 @@ if (!$actuacions) {
 </tbody>
 </table>
 </section>
+
+</body>
+</html>

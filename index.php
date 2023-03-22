@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php session_start()?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,22 +9,26 @@
     <title>Document</title>
 </head>
 
+
+
 <body>
-    <div class="body">
-        <header id="containerTitol">
-            <h1 id="titolPrincipal">Incidencies Pedralbes</h1>
-        </header>
-        <a href="formulario.php" class="botoPagPrincipal">Crear incidencia</a>
-        <a href="llistaincidencies.php" class="botoPagPrincipal">Lista incidencies</a>
-        <a href="selectTecnico.php" class="botoPagPrincipal">Crear actiacuacions</a>
-        <form action="consultar.php" method="get">
-        <div class="form-group princ">
-            <input type="number" name="idInc" id="idInc" class="princ">
-            <button class="btn btn-light">Cercar incidencia</button>
+    <div class="main">
+        <div class="body">
+            <header id="containerTitol">
+                <h1 id="titolPrincipal">Incidencies Pedralbes</h1>
+            </header>
+            <?php include_once "menuSuperior.php";?>
+            <a href="formulario.php" class="botoPagPrincipal">Crear incidencia</a>
+            <a href="llistaincidencies.php" class="botoPagPrincipal">Lista incidencies</a>
+            <a href="selectTecnico.php" class="botoPagPrincipal">Crear actiacuacions</a>
+            <form action="consultar.php" method="get">
+            <div class="form-group princ">
+                <input type="number" name="idInc" id="idInc" class="princ">
+                <button class="btn btn-light">Cercar incidencia</button>
+            </div>
+            </form>
         </div>
-        </form>
     </div>
-    <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
 </body>
 
 </html>

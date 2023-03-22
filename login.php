@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                         }
                     }
                 }else{
-                    echo "Oops! Algo ha salido mal. Vuelve a intentarlo más tarde.";
+                    echo "Oops! Alguna cosa ha anat malament. Torna-ho a intentar més tard.";
                 }
             }
             mysqli_smt_close($stmt);
@@ -62,18 +62,20 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <?php include_once "encabezado.php";?>
     <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapperLog">
         <h2>Login</h2>
         <?php 
         if(!empty($login_err)){
@@ -88,14 +90,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" placeholder="Introduzca su contraseña..." class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <label for="password">Contrasenya</label>
+                <input type="password" name="password" id="password" placeholder="Introdueixi la seva contrasenya..." class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>¿No tienes una cuenta? <a href="registerUser.php">Registrate ahora</a>.</p>
+            <p>No tens compte? <a href="registerUser.php">Registra't ara</a>.</p>
         </form>
     </div>
 </body>

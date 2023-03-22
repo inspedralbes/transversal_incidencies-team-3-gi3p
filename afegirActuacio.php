@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "encabezado.php";?>
-    <title>Document</title>
+    <title>Afegir actuació</title>
 </head>
 <?php
 $idTecnic=$_GET["tecnic"];
@@ -20,37 +17,39 @@ $resultado2 = $mysqli->query("SELECT idInc FROM INCIDENCIA Where tecnic=$idTecni
 $incidenciaid = $resultado2->fetch_all(MYSQLI_ASSOC);
 ?>
 <body>
-    <form action="registrarActuacio.php" method="POST">
-       
+    <div class="main">
+        <form action="registrarActuacio.php" method="POST">
+        
 
-        <select name="idincidencia" id="idincidencia" required class="form-select">
-            <?php foreach($incidenciaid as $incidencia){?>
-                    <option value="<?php echo $incidencia["idInc"]?>"><?php echo $incidencia["idInc"]?></option>
-                <?php }?>
-        </select>
-        <label>Descripció de l'actuació</label>
-        <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" maxlength="500" required></textarea>
-        <div class="form-group">
-        <label for="temps">Temps</label>
-        <input type="text" class="form-control" name="temps" id="temps"></input>
-        </div>
-        <fieldset>
-            <legend>Estat de la incidencia</legend>
-            <div>
-                <div class="form-check">
-                    <input type="checkbox" id="completada" name="completada"class="form-check-input" value=1>
-                    <label for="completada" class="form-check-label">Completada</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" id="visible" name="visible" class="form-check-input" value=1>
-                    <label for="visible" class="form-check-label">Visible per l'usuari</label>
-                </div>
+            <select name="idincidencia" id="idincidencia" required class="form-select">
+                <?php foreach($incidenciaid as $incidencia){?>
+                        <option value="<?php echo $incidencia["idInc"]?>"><?php echo $incidencia["idInc"]?></option>
+                    <?php }?>
+            </select>
+            <label>Descripció de l'actuació</label>
+            <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" maxlength="500" required></textarea>
+            <div class="form-group">
+            <label for="temps">Temps</label>
+            <input type="text" class="form-control" name="temps" id="temps"></input>
             </div>
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-success">Guardar</button>
-            <a class="btn btn-warning" href="selectTecnico.php">Volver</a>
-        </div>
-    </form>
+            <fieldset>
+                <legend>Estat de la incidencia</legend>
+                <div>
+                    <div class="form-check">
+                        <input type="checkbox" id="completada" name="completada"class="form-check-input" value=1>
+                        <label for="completada" class="form-check-label">Completada</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="visible" name="visible" class="form-check-input" value=1>
+                        <label for="visible" class="form-check-label">Visible per l'usuari</label>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-success">Guardar</button>
+                <a class="btn btn-warning" href="selectTecnico.php">Volver</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

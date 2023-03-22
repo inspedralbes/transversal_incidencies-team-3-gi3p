@@ -1,8 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php include_once "encabezado.php";?>
+    <title>Editar incidencia</title>
+</head>
+<body>
+    <div class ="main">
+
 <?php
 include_once "encabezado.php";
 $mysqli = include_once "conexion.php";
 $id = $_GET["idInc"];
-$sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus, DEPARTAMENT.nom, TECNIC.idTec as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN TECNIC ON TECNIC.idTec = INCIDENCIA.tecnic WHERE idInc = ?");
+$sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus, DEPARTAMENT.nom, USUARIO.id_User as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE idInc = ?");
 $sentencia->bind_param("i", $id);
 $sentencia->execute();
 $resultado = $sentencia->get_result();
@@ -66,4 +76,6 @@ if (!$incidencia) {
         </form>
     </div>
 </div>
-<?php include_once "pie.php"; ?>
+        </div>
+</body>
+</html>
