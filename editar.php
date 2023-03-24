@@ -1,16 +1,20 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
+<?php session_start()?>
 <head>
     <?php include_once "encabezado.php";?>
     <title>Editar incidencia</title>
 </head>
 <body>
     <div class ="main">
-
+    <?php 
+    $mysqli = include_once "conexion.php";
+    include_once "menuSuperior.php";
+    ?>
 <?php
 include_once "encabezado.php";
-$mysqli = include_once "conexion.php";
+
 $id = $_GET["idInc"];
 $sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus, DEPARTAMENT.nom, USUARIO.id_User as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE idInc = ?");
 $sentencia->bind_param("i", $id);
@@ -21,11 +25,14 @@ $incidencia = $resultado->fetch_assoc();
 
 
 
+
 if (!$incidencia) {
     exit("No hay resultados para ese ID");
 }
 
 ?>
+
+
 <div class="row">
     <div class="col-12">
         <h1>Actualizar incidencia</h1>

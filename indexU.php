@@ -22,8 +22,6 @@
             </header>
 
             <a href="formulario.php" class="botoPagPrincipal">Crear incidencia</a>
-            <a href="llistaincidencies.php" class="botoPagPrincipal">Lista incidencies</a>
-            <a href="afegirActuacio.php" class="botoPagPrincipal">Crear actuacion</a>
             <form action="consultar.php" method="get">
             <div class="form-group princ">
                 <input type="number" name="idInc" id="idInc" class="princ">

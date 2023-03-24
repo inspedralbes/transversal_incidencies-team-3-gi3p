@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start()?>
 <head>
     <?php include_once "encabezado.php"; ?>
     <title>Formulario de incidencia </title>
 </head>
 <body>
+<?php include_once "conexion.php";?>
+
 <div class="main">
+
+<?php //include_once "menuSuperior.php"; ?>
+<div>
+                    <?php include_once "menuSuperior.php";?>
+                </div>
 <div class="row">
     <div class="col-12">
         <h1>Registrar incidencia</h1>
@@ -15,7 +23,7 @@
                 <select name="clase" id="clase">
                     
                     <?php
-                     include_once "conexion.php";
+                     
 
                     $sentencia = $mysqli->query("SELECT idDep, nom FROM DEPARTAMENT");
                     $departaments = $sentencia->fetch_all(MYSQLI_ASSOC);
@@ -27,6 +35,7 @@
                     } ?>
                     
                 </select>
+
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción del problema</label>

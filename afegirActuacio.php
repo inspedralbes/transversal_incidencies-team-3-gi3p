@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start()?>
 <head>
     <?php include_once "encabezado.php";?>
     <title>Afegir actuació</title>
 </head>
 <?php
-$idTecnic=$_GET["tecnic"];
+$idTecnic=$_SESSION["id"];
 include_once "conexion.php";
 $mysqli = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
 if ($mysqli->connect_errno) {
@@ -18,6 +19,7 @@ $incidenciaid = $resultado2->fetch_all(MYSQLI_ASSOC);
 ?>
 <body>
     <div class="main">
+    <?php include_once "menuSuperior.php";?>
         <form action="registrarActuacio.php" method="POST">
         
 
@@ -30,7 +32,7 @@ $incidenciaid = $resultado2->fetch_all(MYSQLI_ASSOC);
             <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" maxlength="500" required></textarea>
             <div class="form-group">
             <label for="temps">Temps</label>
-            <input type="text" class="form-control" name="temps" id="temps"></input>
+            <input type="number" class="form-control" name="temps" id="temps"></input>
             </div>
             <fieldset>
                 <legend>Estat de la incidencia</legend>
@@ -47,7 +49,7 @@ $incidenciaid = $resultado2->fetch_all(MYSQLI_ASSOC);
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-success">Guardar</button>
-                <a class="btn btn-warning" href="selectTecnico.php">Volver</a>
+                <a class="btn btn-warning" href="index.php">Volver</a>
             </div>
         </form>
     </div>

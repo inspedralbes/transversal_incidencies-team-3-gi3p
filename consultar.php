@@ -1,15 +1,17 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
+<?php session_start()?>
 <head>
     <?php include_once "encabezado.php"; ?>
     <title>Consulta de incidencia</title>
 </head>
 <body>
-
-
-<?php
+<?php 
 $mysqli = include_once "conexion.php";
+
+
+
 $id = $_GET["idInc"];
 $sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus,dataFi, DEPARTAMENT.nom, CONCAT(USUARIO.nombre,' ',USUARIO.pApellido,' ',USUARIO.sApellido) as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE idInc = ?");
 $sentencia->bind_param("i", $id);
@@ -26,26 +28,40 @@ if (!$incidencia) {
 $resultado= $mysqli->query("SELECT descripcio,data,temps,idAct FROM ACTUACIO WHERE incidencia = $id AND visible = 1 ORDER BY idAct");
 $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
-<section>
-    <div class="con-desc"><h3>Descripció</h3>
-    <p> <?php echo $incidencia['descripcio']?> </p>
-    <h3>Tècnic</h3>
-    <p> <?php if (empty($incidencia["tecnic"])) {
+<div class ="main">
+    
+<table class="table table-striped table-light w-25 p-3 ml-auto">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Tècnic</th>
+                <th scope="col">Data inici</th>
+                <th scope="col">Estat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row"><?php echo $incidencia['idInc']?></th>
+                <td><?php if (empty($incidencia["tecnic"])) {
                 echo "Sense assignar";
             } else {
                 echo $incidencia["tecnic"];
-            } ?> 
-    </p></div>
-    <div class="con-data">
-    <h3>Data inici</h3>
-    <p> <?php echo $incidencia['data']?> </p></div>
-    <div class="con-estat">
-    <h3>Estat</h3>
-    <p><?php if (empty($incidencia["dataFi"])) {
+            } ?> </td>
+                <td><?php echo $incidencia['data']?></td>
+                <td><?php if (empty($incidencia["dataFi"])) {
                 echo "En procés";
             } else {
                 echo "Solucionat el "; echo $incidencia['dataFi'];
-            } ?> </p></div>
+            } ?> </td>
+
+            <tr>
+                <tr>
+                <td colspan=4><?php echo $incidencia['descripcio']?></td>
+
+                </tr>
+        </tbody>
+</table>
+
     <h2>Actuacions</h2>
 
 
@@ -77,10 +93,11 @@ if (!$actuacions) {
         <?php } 
     } ?>
 
-
 </tbody>
 </table>
 </section>
+<a class="btn btn-warning" href="index.php">Volver</a>
 
+</div>
 </body>
 </html>

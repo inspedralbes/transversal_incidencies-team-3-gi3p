@@ -1,12 +1,18 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
+<?php session_start()?>
 <head>
     <?php include_once "encabezado.php"; ?>
     <title>Llistat de incidencies</title>
 </head>
 <body>
 <div class="main">
+
+<?php 
+$mysqli=include_once "conexion.php";
+include_once "menuSuperior.php";?>
+
 <header id="containerTitol">
         <a href="index.php"><h1 id="titolPrincipal">Incidències</h1></a>
     </header>
@@ -23,7 +29,7 @@
 
         </div>
         <?php
-        $mysqli = include_once "conexion.php";
+        
         $resultado = $mysqli->query("SELECT idInc, descripcio, prioritat, DEPARTAMENT.nom as departament , CAST(INCIDENCIA.data AS date) AS data, USUARIO.nombre as tecnic FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE INCIDENCIA.dataFi IS NULL ORDER BY idInc");
         $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
         

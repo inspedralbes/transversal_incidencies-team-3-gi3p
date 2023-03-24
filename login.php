@@ -3,6 +3,8 @@
 session_start();
 
 if(isset($_SESSION["loggedin"])&& $_SESSION["loggedin"]===true){
+    
+
     header("location: index.php");
     exit;
 }
@@ -44,7 +46,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             $_SESSION["loggedin"]=true;
                             $_SESSION["id"]=$id;
                             $_SESSION["username"]=$username;
-
                             header("location: index.php");
                         }else{
                             $login_err="Usuario o contraseña incorrectas.";
@@ -54,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     echo "Oops! Alguna cosa ha anat malament. Torna-ho a intentar més tard.";
                 }
             }
-            mysqli_smt_close($stmt);
+            mysqli_stmt_close($stmt);
         }
     }  
     mysqli_close($mysqli);
@@ -76,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 <body>
     <div class="wrapperLog">
-        <h2>Login</h2>
+        <h2 class="logTit">Login</h2>
         <?php 
         if(!empty($login_err)){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
@@ -91,13 +92,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             </div>    
             <div class="form-group">
                 <label for="password">Contrasenya</label>
-                <input type="password" name="password" id="password" placeholder="Introdueixi la seva contrasenya..." class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <input type="password" name="password" id="password" placeholder="Introdueixi la seva contrasenya..." required class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?> ">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>No tens compte? <a href="registerUser.php">Registra't ara</a>.</p>
+            <div class="messLog"><p>No tens compte? <a href="registerUser.php">Registra't ara</a>.</p></div>
         </form>
     </div>
 </body>

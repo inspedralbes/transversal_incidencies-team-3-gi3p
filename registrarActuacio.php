@@ -6,21 +6,16 @@ $terminada=$_POST["completada"];
 $visible= $_POST["visible"];
 $min=$_POST["temps"];
 
+echo $id;
 if(empty($visible)){
     $visible=0;
 }
-if(empty($terminada)){
-    $sentencia = $mysqli->prepare("UPDATE INCIDENCIA SET 
-    dataFi=? WHERE idInc=?");
-    $sentencia->bind_param("si", "NULL", $id);
-    $sentencia->execute();
-} else{
+if(!empty($terminada)){
     $sentencia = $mysqli->prepare("UPDATE INCIDENCIA SET 
     dataFi=? WHERE idInc=?");
     $sentencia->bind_param("si", date("Y-m-d h:i:s"), $id);
     $sentencia->execute();
-}
-
+} 
 $sentencia2 = $mysqli->prepare("INSERT INTO ACTUACIO
 (descripcio, visible, incidencia, temps)
 VALUES
