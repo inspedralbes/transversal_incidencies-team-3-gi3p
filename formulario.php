@@ -1,55 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<?php session_start()?>
+<html lang="ca">
+
 <head>
     <?php include_once "encabezado.php"; ?>
-    <title>Formulario de incidencia </title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<?php include_once "conexion.php";?>
+    <?php include_once "conexion.php"; ?>
 
-<div class="main">
+    <div class="main">
 
-<?php //include_once "menuSuperior.php"; ?>
-<div>
-                    <?php include_once "menuSuperior.php";?>
-                </div>
-<div class="row">
-    <div class="col-12">
-        <h1>Registrar incidencia</h1>
-        <form action="registrar.php" method="POST">
-            <div class="form-group">
-                <label for="clase">Departament</label>
-                <select name="clase" id="clase">
-                    
-                    <?php
-                     
+        <?php include_once "menuSuperior.php"; ?>
 
-                    $sentencia = $mysqli->query("SELECT idDep, nom FROM DEPARTAMENT");
-                    $departaments = $sentencia->fetch_all(MYSQLI_ASSOC);
-                
-                        foreach ($departaments as $departament) { ?>
+        <div class="row">
+            <div class="col-12">
+                <h1><b>Registrar incidencia</b></h1>
+                <form action="registrar.php" method="POST">
+                    <div class="form-group">
+                        <label for="clase">Departament</label>
+                        <select name="clase" id="clase">
+                            <?php $sentencia = $mysqli->query("SELECT idDep, nom FROM DEPARTAMENT");
+                            $departaments = $sentencia->fetch_all(MYSQLI_ASSOC);
 
-                        <option value="<?php echo $departament["idDep"];?>"> <?php echo $departament["nom"];?> </option> <?php
+                            foreach ($departaments as $departament) { ?>
 
-                    } ?>
-                    
-                </select>
+                                <option value="<?php echo $departament["idDep"]; ?>"> <?php echo $departament["nom"]; ?>
+                                </option>
+                                <?php
 
+                            } ?>
+
+                        </select>
+                    </div>
+                    <div class="form-group" id="descPro">
+                        <label for="descripcion">Descripció del problema</label>
+                        <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion"
+                            cols="30" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary <?php include "selectorUser.php" ?>">Guardar</button>
+                        <a class="btn btn-secondary ml-2" href="index.php">Volver</a>
+
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción del problema</label>
-                <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" required></textarea>
-            </div>
-           
-            <div class="form-group">
-                <button class="btn btn-success">Guardar</button>
-                <a class="btn btn-warning" href="index.php">Volver</a>
-                
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-</div>
 </body>
+<footer> <?php include_once "footer.php"; ?></footer>
 </html>

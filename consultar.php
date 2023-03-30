@@ -1,16 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="ca">
-<?php session_start()?>
 <head>
     <?php include_once "encabezado.php"; ?>
-    <title>Consulta de incidencia</title>
 </head>
 <body>
 <?php 
-$mysqli = include_once "conexion.php";
+//$mysqli = include_once "conexion.php";
+include_once "menuSuperior.php";?>
 
 
+<?php
 
 $id = $_GET["idInc"];
 $sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus,dataFi, DEPARTAMENT.nom, CONCAT(USUARIO.nombre,' ',USUARIO.pApellido,' ',USUARIO.sApellido) as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE idInc = ?");
@@ -29,8 +29,7 @@ $resultado= $mysqli->query("SELECT descripcio,data,temps,idAct FROM ACTUACIO WHE
 $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 <div class ="main">
-    
-<table class="table table-striped table-light w-25 p-3 ml-auto">
+<table class="table table-striped table-light w-25 p-3 ml-auto mr-auto">
         <thead>
             <tr>
                 <th scope="col">id</th>
@@ -61,43 +60,42 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
                 </tr>
         </tbody>
 </table>
-
     <h2>Actuacions</h2>
 
 
 
-<?php 
-if (!$actuacions) {
-
-    echo "No hi ha cap actuació realitzada";
-    }else{ ?>
-        <table class="table table-striped table-light">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Data</th>
-                <th scope="col">Descripcio</th>
-                <th scope="col">Temps</th>
-            </tr>
-        </thead>
-        <tbody>
-
     <?php
-        foreach ($actuacions as $actuacio){ ?>
-            <tr>
-                <th scope="row"><?php echo $actuacio["idAct"] ?></th>
-                <td><?php echo $actuacio["data"] ?></td>
-                <td><?php echo $actuacio["descripcio"] ?></td>
-                <td><?php echo $actuacio["temps"] ?></td>
-            <tr>
-        <?php } 
-    } ?>
-
-</tbody>
-</table>
+        if (!$actuacions) {
+        
+            echo "No hi ha cap actuació realitzada";
+            }else{ ?>
+                <table class="table table-striped table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Descripcio</th>
+                        <th scope="col">Temps</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+            <?php
+                foreach ($actuacions as $actuacio){ ?>
+                    <tr>
+                        <th scope="row"><?php echo $actuacio["idAct"] ?></th>
+                        <td><?php echo $actuacio["data"] ?></td>
+                        <td><?php echo $actuacio["descripcio"] ?></td>
+                        <td><?php echo $actuacio["temps"] ?></td>
+                    <tr>
+                <?php } ?>
+                </tbody>
+                </table> 
+             <?php } ?>
 </section>
-<a class="btn btn-warning" href="index.php">Volver</a>
+<a class="btn btn-secondary ml-2" href="index.php">Volver</a>
 
 </div>
 </body>
+<footer> <?php include_once "footer.php"; ?></footer>
 </html>

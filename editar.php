@@ -1,10 +1,8 @@
 
 <!DOCTYPE html>
 <html lang="ca">
-<?php session_start()?>
 <head>
     <?php include_once "encabezado.php";?>
-    <title>Editar incidencia</title>
 </head>
 <body>
     <div class ="main">
@@ -34,22 +32,24 @@ if (!$incidencia) {
 
 
 <div class="row">
-    <div class="col-12">
-        <h1>Actualizar incidencia</h1>
+    <div class="col-12"id="actua">
+        <h1><b>Actualizar incidencia</b></h1>
         <form action="actualizar.php" method="POST">
             <input type="hidden" name="idInc" value="<?php echo $incidencia["idInc"] ?>">
             <input type="hidden" name="data" value="<?php echo $incidencia["data"] ?>">
 
-            
+
             <label for="prioritat">Prioritat</label>
                 <select name="prioritat" id="">
-                    <option value="Alta">Alta</option>
-                    <option value="Mitja">Mitja</option>
-                    <option value="Baixa">Baixa</option>
+                    <option value="Alta" <?php if ( $incidencia["prioritat"] == "Alta") echo('selected') ?> >Alta</option>
+                    <option value="Mitja" <?php if ( $incidencia["prioritat"] == "Mitja") echo('selected') ?>>Mitja</option>
+                    <option value="Baixa" <?php if ( $incidencia["prioritat"] == "Baixa") echo('selected') ?>>Baixa</option>
             </select>
 
             <label for="tecnic">Tècnic</label>
             <select name="tecnic" id="tecnic">
+                <option value="0" selected>Sense assignar</option>
+
             <?php
             $sentenciaTecnic = $mysqli->query("SELECT id_User, nombre FROM USUARIO WHERE tipo_User=2");
             $tecnics = $sentenciaTecnic->fetch_all(MYSQLI_ASSOC);
@@ -60,7 +60,6 @@ if (!$incidencia) {
             <?php                    
             }
              ?>
-            <option value="0">Sense assignar</option>
             
             </select>
             <label for="tipologia">Tipologia</label>
@@ -85,4 +84,5 @@ if (!$incidencia) {
 </div>
         </div>
 </body>
+<footer> <?php include_once "footer.php"; ?></footer>
 </html>

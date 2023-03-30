@@ -1,9 +1,9 @@
-
 .main {
     text-align: center;
     width: 100%;
 }
-form *{
+
+form * {
     text-align: left;
 }
 
@@ -13,19 +13,17 @@ form *{
     width: 60%;
     padding: 2%;
     color: black;
-    background-color: rgb(255, 255, 255);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1cm;
     margin-top: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
+    letter-spacing: 5px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.botoPagPrincipal{
+.botoPagPrincipal {
     color: white;
     background-color: black;
     padding: 10px;
@@ -35,8 +33,14 @@ a{
 
 }
 
-.tarjeta p {
-    font-size: 0.50cm;
+.tarjeta h2 {
+    font-size: 25px;
+}
+
+.tarjeta {
+    margin-bottom: 0.5%;
+    width: 15%;
+    height: 50%;
 }
 
 #taulaIncidencies {
@@ -45,56 +49,79 @@ a{
     margin-right: auto;
 }
 
+.separador {
+    height: 3px;
+    width: 50%;
+    background-color: #95CBE0;
+    border: none;
+}
+
 #titolTaulaIncidencies,
 .incidencia {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 2fr 3fr 1fr;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-    border-left: 1px solid;
     grid-template-areas: 'id dep prior data tecnic editar accio'
-    'desc desc desc desc desc desc desc';
+        'desc desc desc desc desc desc desc';
 
 }
-.incidencia{
+
+.incidencia {
     background-color: rgb(185, 183, 183);
     margin-top: 20px;
-    border-top: 1px solid;
 }
-#titolTaulaIncidencies{
+
+#titolTaulaIncidencies {
     background-color: white;
 }
 
-.campIncidenciaId,.campIncidenciaDep,.campIncidenciaPrio,.campIncidenciaData,
-.titolTaulaIncidencia, .campIncidenciaAccio,
-.campIncidenciaDescripcio,.campIncidenciaTecnic,.botoEditar {
+.campIncidenciaId,
+.campIncidenciaDep,
+.campIncidenciaPrio,
+.campIncidenciaData,
+.titolTaulaIncidencia,
+.campIncidenciaAccio,
+.campIncidenciaDescripcio,
+.campIncidenciaTecnic,
+.botoEditar {
     margin-bottom: 0;
     padding-top: 15px;
     padding-bottom: 15px;
-    
+
 }
-.campIncidencia{
+
+.campIncidencia {
     grid-area: id;
 }
-.campIncidenciaDep{
+
+.campIncidenciaDep {
     grid-area: dep;
 }
-.campIncidenciaPrio{
+
+.campIncidenciaPrio {
     grid-area: prior;
 }
-.campIncidenciaData{
+
+.campIncidenciaData {
     grid-area: data;
 }
-.campIncidenciaTecnic{
+
+.campIncidenciaTecnic {
     grid-area: tecnic;
 }
-.botoEditar{
+
+.botoEditar {
     grid-area: editar;
     margin-top: 16px;
 }
-.campIncidenciaAccio{
+
+.botoEditar:hover {
+    margin-top: 16px;
+}
+
+.campIncidenciaAccio {
     grid-area: editar;
 }
+
 #titolTaulaIncidencies * {
 
     padding-top: 10px;
@@ -108,9 +135,10 @@ a{
 
 
 
-.campIncidenciaDescripcio,.titolTaulaIncidenciaDescripcio {
+.campIncidenciaDescripcio,
+.titolTaulaIncidenciaDescripcio {
     max-width: 768px;
-    grid-area:desc;
+    grid-area: desc;
 }
 
 
@@ -123,10 +151,8 @@ a{
     margin-left: auto;
     margin-right: auto;
 }
-.incidencia:nth-child(even){
-    background-color: white;
-}
-.incidencia:hover{
+
+.incidencia:hover {
     background-color: beige;
 }
 
@@ -136,110 +162,203 @@ a{
         grid-template-columns: 1fr 1fr 1fr;
         width: 50%;
     }
+
     #taulaIncidencies {
         width: 70%;
-        
+
     }
-    #taulaIncidencies *{
-        color:black;
+
+    #taulaIncidencies * {
+        color: black;
     }
-    #titolTaulaIncidencies>*{
+
+    #titolTaulaIncidencies>* {
         color: white;
     }
+
     .incidencia {
         background-color: rgb(185, 183, 183);
         margin-top: auto;
-        border-top: 0px;
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
         grid-template-areas: 'id dep desc prior data tecnic editar';
     }
+
     #titolTaulaIncidencies,
     .incidencia {
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
         grid-template-areas: 'id dep desc prior data tecnic editar';
     }
-    .campIncidenciaDescripcio,.titolTaulaIncidenciaDescripcio {
+
+    .campIncidenciaDescripcio,
+    .titolTaulaIncidenciaDescripcio {
         max-width: 300px;
     }
-     
+
+    .table {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
-.princ{
+
+.princ {
     margin-top: 2%;
     margin-bottom: 1%;
     text-align: center;
 }
-.body{
+
+.body {
     margin-top: 20px;
     margin-bottom: 20px;
-    border: 3px dotted white;
     width: 80%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(98, 0, 255);
+    background: rgb(255, 255, 255);
+    /* background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(21,140,186,1) 100%);
+    border-radius: 10px;*/
 }
 
 
-input.princ{
+input.princ {
     margin-right: 2%;
 }
 
 
-#taulaIncidencies *{
-    color:black;
+#taulaIncidencies * {
+    color: black;
 }
-#titolTaulaIncidencies>*{
+
+#titolTaulaIncidencies>* {
     color: white;
 }
 
-.ml-auto{
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-}    
 
-.wrapper{
+.wrapper {
     width: 80%;
     position: relative;
     left: 20%;
 }
-.form-group{
+
+.form-group {
     margin-left: 100px;
+
 }
-.wrapperLog{
+
+.wrapperLog {
     width: 50%;
     position: relative;
     margin-left: auto;
     margin-right: auto;
 }
 
-.menuSuperior{
+.menuSuperior {
     position: sticky;
     margin-right: 10px;
     top: 10px;
-    float:right;
+    text-align: right;
 }
-.logTit{
+
+.logTit {
     width: 80%;
     top: 10px;
     position: relative;
     margin-left: auto;
-margin-right: auto;
-text-align: center;
+    margin-right: auto;
+    text-align: center;
 }
-.btn btn-primary{
+
+.btn,
+btn-primary {
+    position: relative;
     padding-top: 10px;
-margin: 10px;
+    top: 10px;
 }
-.messLog{
+
+.messLog {
     width: 100%;
     position: relative;
     margin-left: 100px;
     text-align: center;
     padding-top: 20px
+}
+
+.Alta {
+    background-color: #e06668;
+}
+
+.Alta:hover {
+    background-color: #dd4d50;
 
 }
 
+.Mitja {
+    background-color: #eca343;
+}
 
+.Mitja:hover {
+    background-color: #eb9525;
+}
+
+.Baixa {
+    background-color: #f9f871;
+}
+
+.Baixa:hover {
+    background-color: #fcfc4c;
+
+}
+
+.tarjeta>img {
+    position: relative;
+    height: 50px;
+}
+
+.cercar>img {
+    position: relative;
+    height: 25px;
+}
+
+.consul {
+    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-groupprincconsul {
+    position: relative;
+    left: auto;
+    width: 25%;
+}
+
+.graella {
+    margin-top: 200px;
+
+}
+
+.row {
+    position: relative;
+    left: 300px;
+}
+
+.mostrarId {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.idAMostrar {
+    size: xxL;
+}
+.col-12{
+    width: 80%;
+    position: relative;
+    right: 200px;
+    top: 20px;
+}
+.correus{
+    width: 70%;
+    position: relative;
+    font-size: 1.5em;
+}

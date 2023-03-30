@@ -1,7 +1,7 @@
 <?php
 $mysqli = include_once "conexion.php";
 $desc = $_POST["descripcion"];
-$id = $_POST["idincidencia"];
+$id = $_POST["idInc"];
 $terminada=$_POST["completada"];
 $visible= $_POST["visible"];
 $min=$_POST["temps"];
@@ -22,4 +22,4 @@ VALUES
 (?, ?, ?, ?)");
 $sentencia2->bind_param("siii", $desc,$visible, $id, $min);
 $sentencia2->execute();
-header("Location: llistaincidencies.php");
+header("Location: crearActuacion.php");
