@@ -27,8 +27,8 @@ include_once "menuSuperior.php"; ?>
             <form action="consultar.php" method="get">
                 <div class="form-group princ consul">
                     <input type="number" name="idInc" id="idInc" class="form-control" placeholder="1" min="1">
-                    <button class="btn btn-primary cercar <?php include "selectorUser.php" ?>"><img src="./img/if.png"> Cercar incidencia</button>
-                </div>
+                    <div class="cercar"><button class="btn btn-primary cercar <?php include "selectorUser.php" ?>"><img src="./img/if.png"> Cercar incidencia</button>
+                    </div></div>
             </form>
             <div id="graella">
                 <a href="formulario.php">
@@ -55,11 +55,26 @@ include_once "menuSuperior.php"; ?>
                         </div>
                     </a>
                 <?php } ?>
+                    <br>
+                <?php if($_SESSION["tipoUser"]<2) { ?>
+                    <a href="chartDepartament_Temps.php">
+                    <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
+                        <img src="./img/write.png">
+                        <h2>Consulta<br> departament</h2>
+                    </div>
+                </a>
 
-
+                <a href="crearActuacion.php">
+                    <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
+                        <img src="./img/write.png">
+                        <h2>Consulta<br> per tecnic</h2>
+                    </div>
+                </a>
+                <?php } ?>
             </div>
         </div>
-      
+    </div>
+
 </body>
 <footer> <?php include_once "footer.php"; ?></footer>
 </html>

@@ -3,6 +3,7 @@
 <html lang="ca">
 <head>
     <?php include_once "encabezado.php"; ?>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <?php 
@@ -22,7 +23,11 @@ $incidencia = $resultado->fetch_assoc();
 
 
 if (!$incidencia) {
-    exit("No hay resultados para ese ID");
+    echo '<script>              
+    alert("No s\'ha trobat cap resultat amb aquesta id");
+    window.location.href =  "homeAdmin.php";
+    
+    </script>';
 }
 
 $resultado= $mysqli->query("SELECT descripcio,data,temps,idAct FROM ACTUACIO WHERE incidencia = $id AND visible = 1 ORDER BY idAct");
@@ -60,7 +65,7 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
                 </tr>
         </tbody>
 </table>
-    <h2>Actuacions</h2>
+    <h2><b>Actuacions</b></h2>
 
 
 
@@ -69,6 +74,7 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
         
             echo "No hi ha cap actuació realitzada";
             }else{ ?>
+            <div class="tab">
                 <table class="table table-striped table-light">
                 <thead>
                     <tr>
@@ -91,11 +97,14 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
                 <?php } ?>
                 </tbody>
                 </table> 
+                </div>
              <?php } ?>
 </section>
-<a class="btn btn-secondary ml-2" href="index.php">Volver</a>
+<a class="btn btn-secondary ml-2" href="index.php">Tornar</a>
 
 </div>
 </body>
+<div class="foot">
 <footer> <?php include_once "footer.php"; ?></footer>
+</div>
 </html>

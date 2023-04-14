@@ -51,6 +51,9 @@ $nombre = $resultado->fetch_assoc();
           <hr class="separador">
         </li>
         <li>
+        <a href="correus.php"><span class="nav-link">Correus</a>
+        </li>
+        <li>
           <a class="nav-link active" href="logout.php">Sortir del compte</a>
         </li>
       </ul>

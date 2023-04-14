@@ -33,8 +33,23 @@ $incidenciaid = $resultado2->fetch_all(MYSQLI_ASSOC);
                 <legend>Estat de la incidencia</legend>
                 <div>
                     <div class="form-check">
-                        <input type="checkbox" id="completada" name="completada"class="form-check-input" value=1>
-                        <label for="completada" class="form-check-label">Completada</label>
+                        <input type="checkbox" onchange="alerta()" id="completada" name="completada"class="form-check-input" value=1>
+                        <label for="completada"  onchange="alerta()" class="form-check-label">Completada</label>
+                      
+                        <script>
+                            function alerta() {
+                                var checkBox = document.getElementById("completada");
+
+                                if (checkBox.checked == true){
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        title: 'Advertencia',
+                                        text: 'Si completas la incidencia no podrás tornar a veure-la',
+                                        })                        
+                                    } 
+
+                                }
+                        </script>
                     </div>
                     <div class="form-check">
                         <input type="checkbox" id="visible" name="visible" class="form-check-input" value=1>

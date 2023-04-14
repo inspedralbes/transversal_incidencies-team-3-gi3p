@@ -1,19 +1,7 @@
 
-<!DOCTYPE html>
-<html lang="ca">
-<head>
-    <?php include_once "encabezado.php";?>
-</head>
-<body>
-    <div class ="main">
-    <?php 
-    $mysqli = include_once "conexion.php";
-    include_once "menuSuperior.php";
-    ?>
 <?php
-include_once "encabezado.php";
-
-$id = $_GET["idInc"];
+$id=$incidencia["idInc"];
+echo $id;
 $sentencia = $mysqli->prepare("SELECT idInc, descripcio,prioritat,tipus, DEPARTAMENT.nom, USUARIO.id_User as tecnic,data FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.idDep = INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User = INCIDENCIA.tecnic WHERE idInc = ?");
 $sentencia->bind_param("i", $id);
 $sentencia->execute();
@@ -21,19 +9,15 @@ $resultado = $sentencia->get_result();
 # Obtenemos solo una fila, que será el incidencia a editar
 $incidencia = $resultado->fetch_assoc();
 
-
-
-
 if (!$incidencia) {
     exit("No hay resultados para ese ID");
 }
 
 ?>
 
-
 <div class="row">
-    <div class="col-12"id="actua">
-        <h1><b>Actualizar incidencia</b></h1>
+    <div class="col-12">
+        <h1>Actualizar incidencia</h1>
         <form action="actualizar.php" method="POST">
             <input type="hidden" name="idInc" value="<?php echo $incidencia["idInc"] ?>">
             <input type="hidden" name="data" value="<?php echo $incidencia["data"] ?>">
@@ -76,14 +60,9 @@ if (!$incidencia) {
             ?>
             </select>
             <div class="form-group">
-                <button class="btn btn-primary admin <?php include "selectorUser.php"?>">Guardar</button>
-                <a class="btn btn-secondary" href="llistaincidencies.php">Tornar</a>
-                <a class="btn btn-danger">Eliminar</a>
+                <button class="btn btn-success">Guardar</button>
+                <a class="btn btn-warning" href="llistaincidencies.php">Volver</a>
             </div>
         </form>
     </div>
 </div>
-        </div>
-</body>
-<footer> <?php include_once "footer.php";?></footer>
-</html>

@@ -47,6 +47,7 @@ a {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 50px;
 }
 
 .separador {
@@ -59,15 +60,17 @@ a {
 #titolTaulaIncidencies,
 .incidencia {
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr 2fr 3fr 1fr;
-    grid-template-areas: 'id dep prior data tecnic editar accio'
-        'desc desc desc desc desc desc desc';
+    grid-template-columns: 1fr 3fr 3fr 2fr 3fr ;
+    grid-template-areas: 'id dep prior data tecnic editar '
+        'desc desc desc desc desc desc ';
 
 }
 
 .incidencia {
-    background-color: rgb(185, 183, 183);
+    background-color: #9AAEBB;
     margin-top: 20px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 
 #titolTaulaIncidencies {
@@ -86,7 +89,7 @@ a {
     margin-bottom: 0;
     padding-top: 15px;
     padding-bottom: 15px;
-
+    
 }
 
 .campIncidencia {
@@ -112,15 +115,14 @@ a {
 .botoEditar {
     grid-area: editar;
     margin-top: 16px;
+    margin-right: 10%;
 }
 
 .botoEditar:hover {
     margin-top: 16px;
 }
 
-.campIncidenciaAccio {
-    grid-area: editar;
-}
+
 
 #titolTaulaIncidencies * {
 
@@ -153,7 +155,7 @@ a {
 }
 
 .incidencia:hover {
-    background-color: beige;
+    background-color: #eee8a9;
 }
 
 
@@ -175,20 +177,22 @@ a {
     #titolTaulaIncidencies>* {
         color: white;
     }
-
+    
     .incidencia {
         background-color: rgb(185, 183, 183);
         margin-top: auto;
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
-        grid-template-areas: 'id dep desc prior data tecnic editar';
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr ;
+        grid-template-areas: 'id dep desc prior data tecnic ';
+        border-bottom: 1px solid black;
+
     }
 
     #titolTaulaIncidencies,
     .incidencia {
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
-        grid-template-areas: 'id dep desc prior data tecnic editar';
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr ;
+        grid-template-areas: 'id dep desc prior data tecnic ';
     }
 
     .campIncidenciaDescripcio,
@@ -273,7 +277,6 @@ input.princ {
 btn-primary {
     position: relative;
     padding-top: 10px;
-    top: 10px;
 }
 
 .messLog {
@@ -333,13 +336,26 @@ btn-primary {
 }
 
 .graella {
-    margin-top: 200px;
+    margin-top: 3%;
 
 }
 
 .row {
     position: relative;
     left: 300px;
+}
+#enviaFiltre{
+    padding-bottom: 1px;
+    padding-top:1px;
+}
+#formFiltre{
+    margin-bottom: 1%;
+}
+#sort{
+    max-width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
 }
 
 .mostrarId {
@@ -351,14 +367,53 @@ btn-primary {
 .idAMostrar {
     size: xxL;
 }
+
 .col-12{
     width: 80%;
     position: relative;
-    right: 200px;
+    right: 180px;
     top: 20px;
+   
 }
-.correus{
-    width: 70%;
+#formulari{
+    max-width:70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#formulari,.form-group{
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#cercaInc{
+    margin-bottom:1%;
+}
+
+.cercar{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tab{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.main{
+    margin-top: 20px;
+}
+.barracercar{
+    margin-bottom: 2%;
+}
+.correo{
+    width: 30%;
+    display: block;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.correo>img {
     position: relative;
-    font-size: 1.5em;
+    height: 25px;
 }

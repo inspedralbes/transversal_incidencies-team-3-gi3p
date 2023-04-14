@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+
+
     <?php include_once "encabezado.php"; ?>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <?php include_once "menuSuperior.php"; ?>
 <body>
 <div class="correus">
     <h1><b>Correus Electrònics del team</b></h1>
+    
    
-    <ul>
-        <li><a href="mailto:a22rauespgom@inspedralbes.cat?Subject=Correu%20de%20Raúl%20Espinosa%20Gómez">Raúl Espinosa Gómez</a></li>
-        <li><a href="mailto:a22lorcrinor@inspedralbes.cat?Subject=Correu%20de%20Loris%20Crisafo%20Norte">Loris Crisafo Norte</a></li>
-        <li><a href="mailto:a19galdelred@inspedralbes.cat?Subject=Correu%20de%20Gala%20del%20Águila">Gala del Águila Redó</a></li>
-        <li><a href="mailto:a20erigomvil@inspedralbes.cat?Subject=Correu%20de%20Eric%20Gómez%20Vilà">Eric Gómez Vilà</a></li>
-    </ul>
-    <a class="btn btn-secondary ml-2" href="index.php">Volver</a>
+        <a href="mailto:a22rauespgom@inspedralbes.cat?Subject=Correu%20de%20Raúl%20Espinosa%20Gómez"><button class="btn btn-primary correo <?php include "selectorUser.php" ?>"><img src="./img/if.png"> Raúl Espinosa Gómez</button></a></li>
+        <a href="mailto:a22lorcrinor@inspedralbes.cat?Subject=Correu%20de%20Loris%20Crisafo%20Norte"><button class="btn btn-primary correo <?php include "selectorUser.php" ?>"><img src="./img/if.png"> Loris Crisafo Norte</button></a></li>
+        <a href="mailto:a19galdelred@inspedralbes.cat?Subject=Correu%20de%20Gala%20del%20Águila"><button class="btn btn-primary correo <?php include "selectorUser.php" ?>"><img src="./img/if.png">Gala del Águila Redó</button></a></li>
+        <a href="mailto:a20erigomvil@inspedralbes.cat?Subject=Correu%20de%20Eric%20Gómez%20Vilà"><button class="btn btn-primary correo <?php include "selectorUser.php" ?>"><img src="./img/if.png">Eric Gómez Vilà</button></a></li>
+    
+    <a class="btn btn-secondary tornar" href="index.php">Tornar</a>
     </div>
    
 

@@ -9,6 +9,8 @@
     <link href=./bootstrap.min.css rel="stylesheet">
     <title>Incidencies Pedralbes</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
+
     <!-- <link rel="stylesheet" href="style.css"> -->
 
 

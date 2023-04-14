@@ -93,7 +93,7 @@
     </div>
     <br>
     <div class="form-group">
-        <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+        <input type="reset" class="btn btn-secondary ml-2" value="Restableix">
     </div>
 </form>
 
