@@ -1,4 +1,9 @@
 <?php
+if(!isset($_POST['sort'])){
+    $sort = "TIPO_PRIORITAT.idPrior DESC";
+    $_POST["sort"] = $sort;
+}
+
 switch ($_POST['sort']) {
     case 'fil1':
         $sort = "INCIDENCIA.idInc";
@@ -47,7 +52,7 @@ myModal.addEventListener('shown.bs.modal', () => {
             <input id="enviaFiltre" class="btn btn-primary <?php include "selectorUser.php"?>" type="submit">
         </form>
 
-        <div id="taulaIncidencies">
+        <div id="taulaIncidencies2">
             <div id="titolTaulaIncidencies2">
                 <p class="campIncidenciaId">id</p>
                 <p class="campIncidenciaDep">Departament</p>

@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form id="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
                     <label for="usernameLog">Email</label>
-                    <input type="email" name="usernameLog" id="usernameLog" placeholder="exemple@exemple.com" required
+                    <input type="email" name="usernameLog" id="usernameLog" placeholder="exemple@exemple.com"
                         class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $username; ?>">
                     <span class="invalid-feedback">
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group">
                     <label for="passwordLog">Contrasenya</label>
                     <input type="password" name="passwordLog" id="passwordLog"
-                        placeholder="Introdueixi la seva contrasenya..." required
+                        placeholder="Introdueixi la seva contrasenya..."
                         class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?> ">
                     <span class="invalid-feedback">
                         <?php echo $password_err; ?>
