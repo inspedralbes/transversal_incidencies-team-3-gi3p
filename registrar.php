@@ -4,6 +4,7 @@ $control=0;
 $mysqli = include_once "conexion.php";
 $clase = $_POST["clase"];
 $descripcion = $_POST["descripcion"];
+$usuario =$_POST["usuari"];
 $sentencia = $mysqli->prepare("INSERT INTO INCIDENCIA
 (departament, descripcio)
 VALUES
@@ -11,11 +12,14 @@ VALUES
 $sentencia->bind_param("ss", $clase, $descripcion);
 $sentencia->execute();
 //header("Location: llistaincidencies.php");
+
 $resul=$mysqli->query("SELECT LAST_INSERT_ID() AS id FROM INCIDENCIA");
 $id=$resul->fetch_all(MYSQLI_ASSOC);
 foreach($id as $id){
     if($control==0){
         $pasar=$id["id"];
+        $mysqli->query("UPDATE `INCIDENCIA` SET `usuari` = '$usuario' WHERE `INCIDENCIA`.`idInc` = $pasar");
+
         $control=1;
     } 
     
@@ -38,5 +42,4 @@ foreach($id as $id){
 </body>
 <footer> <?php include_once "footer.php"; ?></footer>
 </html>
-
 

@@ -23,12 +23,15 @@ $incidencia = $resultado->fetch_assoc();
 
 
 if (!$incidencia) {
-    echo '<script>              
-    alert("No s\'ha trobat cap resultat amb aquesta id");
-    window.location.href =  "homeAdmin.php";
-    
-    </script>';
-}
+    echo  "<script> Swal.fire(
+        'Oops..',
+        'No s\'ha trobat cap incidencia amb aquesta id ',
+        'error'
+        ).then(function() {
+            window.location.href =  'homeAdmin.php';
+        }); </script>";
+
+} else{
 
 $resultado= $mysqli->query("SELECT descripcio,data,temps,idAct FROM ACTUACIO WHERE incidencia = $id AND visible = 1 ORDER BY idAct");
 $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -99,12 +102,11 @@ $actuacions = $resultado->fetch_all(MYSQLI_ASSOC);
                 </table> 
                 </div>
              <?php } ?>
-</section>
-<a class="btn btn-secondary ml-2" href="index.php">Tornar</a>
+ <a class="Tornar btn btn-secondary ml-2 " onClick="history.go(-1);">Tornar</a>
 
 </div>
-</body>
-<div class="foot">
+<?php } ?>
+
 <footer> <?php include_once "footer.php"; ?></footer>
-</div>
+</body>
 </html>

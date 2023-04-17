@@ -37,6 +37,9 @@ $nombre = $resultado->fetch_assoc();
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="formulario.php">Crear Incidència</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="incidenciesUsuari.php">Veure les meves incidencies</a>
+        </li>
         <?php if ($nombre["tipo_User"] < 2) { ?>
           <li class="nav-item">
             <a class="nav-link" href="llistaincidencies.php">Llistat d'incidències</a>
@@ -44,7 +47,7 @@ $nombre = $resultado->fetch_assoc();
         <?php } ?>
         <?php if ($nombre["tipo_User"] < 3) { ?>
           <li class="nav-item">
-            <a href="afegirActuacio.php"><span class="nav-link">Crear consulta</a>
+            <a href="crearActuacion.php"><span class="nav-link">Registrar actuació</a>
           </li>
         <?php } ?>
         <li>

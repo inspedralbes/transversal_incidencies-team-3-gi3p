@@ -22,6 +22,14 @@ form * {
 a {
     text-decoration: none;
 }
+.Tornar{
+    display:block;
+    padding-left: auto;
+    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;   
+}
 
 .botoPagPrincipal {
     color: white;
@@ -39,7 +47,7 @@ a {
 
 .tarjeta {
     margin-bottom: 0.5%;
-    width: 15%;
+    width: 17%;
     height: 50%;
 }
 
@@ -177,6 +185,10 @@ a {
     #titolTaulaIncidencies>* {
         color: white;
     }
+    #titolTaulaIncidencies{
+        position: sticky;
+        top: 0;
+    }
     
     .incidencia {
         background-color: rgb(185, 183, 183);
@@ -203,6 +215,7 @@ a {
     .table {
         margin-left: auto;
         margin-right: auto;
+        max-width:45%;
     }
 }
 
@@ -320,18 +333,11 @@ btn-primary {
 
 .cercar>img {
     position: relative;
-    height: 25px;
+    height:25px;
 }
 
-.consul {
-    width: 45%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.form-groupprincconsul {
-    position: relative;
-    left: auto;
+.consul>input{
+    display: inline-block;
     width: 25%;
 }
 
@@ -367,6 +373,11 @@ btn-primary {
 .idAMostrar {
     size: xxL;
 }
+.cet{
+    margin-top: 1%;
+    text-align: center;
+    margin-bottom: 3%;
+}
 
 .col-12{
     width: 80%;
@@ -389,12 +400,6 @@ btn-primary {
     margin-bottom:1%;
 }
 
-.cercar{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .tab{
     width: 90%;
     margin-left: auto;
@@ -403,17 +408,28 @@ btn-primary {
 .main{
     margin-top: 20px;
 }
-.barracercar{
-    margin-bottom: 2%;
-}
+
 .correo{
     width: 30%;
     display: block;
-    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
+}
+.c{
+    margin-bottom: 1%;
 }
 .correo>img {
     position: relative;
     height: 25px;
+}
+.tornar{
+    position: relative;
+    left: 47%;
+    
+}
+.chart{
+    max-width: 50%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -50,7 +50,7 @@ include_once "menuSuperior.php";
             <h1 id="titolPrincipal"><b>Incidències</b></h1>
         </header>
 
-        <form action="./llistaincidencies.php" method="post" id="formFiltre">
+        <form action="./incidenciesUsuari.php" method="post" id="formFiltre">
             <label for="sort">Ordenar per:</label>
             <select id="sort" class="form-select form-select-sm" aria-label=".form-select-sm example" name="sort">
                 <option value="fil1">Id</option>
@@ -71,13 +71,13 @@ include_once "menuSuperior.php";
                 <p class="campIncidenciaTecnic">Tècnic</p>
             </div>
             <?php
-
-            $resultado = $mysqli->query("SELECT INCIDENCIA.idInc,DATE_FORMAT(INCIDENCIA.data, '%d-%m-%Y') AS data,INCIDENCIA.descripcio,INCIDENCIA.dataFi,tipus,TIPOLOGIA.nom as TIPO,departament,DEPARTAMENT.nom as DEPT,INCIDENCIA.prioritat,TIPO_PRIORITAT.prioritat as PRIOR,tecnic,CONCAT(USUARIO.nombre,' ',USUARIO.pApellido) AS nomComplet FROM INCIDENCIA LEFT JOIN TIPOLOGIA ON TIPOLOGIA.idTip=INCIDENCIA.tipus JOIN DEPARTAMENT ON DEPARTAMENT.idDep=INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User=INCIDENCIA.tecnic LEFT JOIN TIPO_PRIORITAT ON TIPO_PRIORITAT.idPrior=INCIDENCIA.prioritat ORDER BY $sort");
+            $usuari = $_SESSION['id'];
+            $resultado = $mysqli->query("SELECT INCIDENCIA.idInc,DATE_FORMAT(INCIDENCIA.data, '%d-%m-%Y') AS data,INCIDENCIA.descripcio,INCIDENCIA.dataFi,tipus,TIPOLOGIA.nom as TIPO,departament,DEPARTAMENT.nom as DEPT,INCIDENCIA.prioritat,TIPO_PRIORITAT.prioritat as PRIOR,tecnic,CONCAT(USUARIO.nombre,' ',USUARIO.pApellido) AS nomComplet FROM INCIDENCIA LEFT JOIN TIPOLOGIA ON TIPOLOGIA.idTip=INCIDENCIA.tipus JOIN DEPARTAMENT ON DEPARTAMENT.idDep=INCIDENCIA.departament LEFT JOIN USUARIO ON USUARIO.id_User=INCIDENCIA.tecnic LEFT JOIN TIPO_PRIORITAT ON TIPO_PRIORITAT.idPrior=INCIDENCIA.prioritat WHERE usuari=$usuari ORDER BY $sort");
             $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
 
             foreach ($incidencies as $incidencia) { ?>
-            <a data-bs-toggle="modal"
-                        data-bs-target="#modalIncidencies<?php echo $incidencia["idInc"] ?>">
+            <a href="consultar.php?idInc=<?php echo $incidencia["idInc"]?>"> 
+                       
                 <div class="incidencia <?php echo $incidencia["PRIOR"] ?> ">
                 
                     <p class="campIncidenciaId">
@@ -114,8 +114,7 @@ include_once "menuSuperior.php";
                     
                 </div>
                 </a>
-                    <?php include("modals/modalActualitzarIncidencia.php") ?>
-
+                    
             <?php } ?>
 
         </div>

@@ -10,8 +10,22 @@
 
 <?php $mysqli = include_once "conexion.php";
 include_once "menuSuperior.php"; ?>
+<?php
+$resultado = $mysqli->query("SELECT  * FROM Temps_NIncidencies_Departament");
+$tempsDeps = $resultado->fetch_all(MYSQLI_ASSOC);
+
+$dades=[];
+$noms=[];
+foreach ($tempsDeps as $temps){
+  array_push($noms,$temps["nom"]);
+  array_push($dades,$temps["Temps emprat per departament"]);
+
+}
+$jsnoms=json_encode($noms);
+$jsdades=json_encode($dades);
+?>
 <body>
-<div>
+<div class="chart">
   <canvas id="myChart"></canvas>
 </div>
 
@@ -19,15 +33,13 @@ include_once "menuSuperior.php"; ?>
 
 <script>
   const ctx = document.getElementById('myChart');
-
   new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: [<?php
-        ?>],
+      labels: <?php echo $jsnoms ?>,
       datasets: [{
         label: 'Temps emprat',
-        data: [12, 19, 3, 5, 2, 3],
+        data: <?php echo $jsdades ?>,
         borderWidth: 1
       }]
     },
