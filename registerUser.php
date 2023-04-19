@@ -14,7 +14,7 @@
     <input type="hidden" name="regCheck" id="regCheck" value="1">
     <div class="form-group">
         <label for="username">Email</label>
-        <input type="text" name="username" id="username" placeholder="example@example.com" class="form-control 
+        <input type="text" name="username" id="username" placeholder="exemple@exemple.com" class="form-control 
             <?php
             if ((!empty($_SESSION["reg_user_error"]))) {
                 echo 'is-invalid';
@@ -29,7 +29,7 @@
     </div>
     <div class="form-group">
         <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" placeholder="Inserti el seu nom" class="form-control
+        <input type="text" name="nom" id="nom" placeholder="Nom" class="form-control
         <?php
         if ((!empty($_SESSION["reg_nom_error"]))) {
             echo 'is-invalid';
@@ -44,7 +44,7 @@
     </div>
     <div class="form-group">
         <label for="pCog">Primer Cognom</label>
-        <input type="text" name="pCog" id="pCog" placeholder="Inserti el seu primer cognom." class="form-control
+        <input type="text" name="pCog" id="pCog" placeholder="Primer Cognom" class="form-control
         <?php
         if ((!empty($_SESSION["reg_pcog_error"]))) {
             echo 'is-invalid';
@@ -60,11 +60,11 @@
     <div class="form-group">
         <label for="sCog">Segon Cognom</label>
         <input type="text" name="sCog" id="sCog" class="form-control"
-            placeholder="Inserte su segundo apellido... (Opcional)">
+            placeholder="Segon Cognom (Opcional)">
     </div>
     <div class="form-group">
         <label for="password">Contrasenya</label>
-        <input type="password" name="password" id="password" placeholder="Introdueixi la contrasenya..." class="form-control 
+        <input type="password" name="password" id="password" placeholder="Contrasenya nova" class="form-control 
             <?php
             if ((!empty($_SESSION["reg_password_error"]))) {
                 echo 'is-invalid';
@@ -79,7 +79,7 @@
     <div class="form-group">
         <label for="confirm_password">Confirmi la contrasenya</label>
         <input type="password" name="confirm_password" id="confirm_password"
-            placeholder="Torna a escriure la contrasenya..." class="form-control 
+            placeholder="Torna a escriure la contrasenya" class="form-control 
             <?php
             if ((!empty($_SESSION["reg_password_confirm_err"]))) {
                 echo 'is-invalid';

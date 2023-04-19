@@ -19,16 +19,28 @@ form * {
     letter-spacing: 5px;
 }
 
-a {
-    text-decoration: none;
+.crearInc {
+    text-decoration: underline #2e95f5;
+    color: #2e95f5;
+    font-weight: bold;
+
 }
-.Tornar{
-    display:block;
+
+.buit {
+    font-size: larger;
+}
+
+a {
+    text-decoration: none
+}
+
+.Tornar {
+    display: block;
     padding-left: auto;
     padding-right: auto;
     margin-left: auto;
     margin-right: auto;
-    max-width: 150px;   
+    max-width: 150px;
 }
 
 .botoPagPrincipal {
@@ -51,7 +63,9 @@ a {
     height: 50%;
 }
 
-#taulaIncidencies,#taulaIncidencies2 {
+#taulaIncidencies,
+#taulaIncidencies2,
+#taulaIncidencies3 {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -68,7 +82,7 @@ a {
 #titolTaulaIncidencies,
 .incidencia {
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr 2fr 3fr ;
+    grid-template-columns: 1fr 3fr 3fr 2fr 3fr;
     grid-template-areas: 'id dep prior data tecnic editar '
         'desc desc desc desc desc desc ';
 
@@ -77,20 +91,24 @@ a {
 #titolTaulaIncidencies2,
 .incidencia2 {
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr 2fr 3fr ;
+    grid-template-columns: 1fr 3fr 3fr 2fr 3fr;
     grid-template-areas: 'id dep prior data editar '
         'desc desc desc desc desc desc ';
 
 }
 
-.incidencia,.incidencia2 {
+.incidencia,
+.incidencia2,
+.incidencia3 {
     background-color: #9AAEBB;
     margin-top: 20px;
-    padding-top:10px;
-    padding-bottom:10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-#titolTaulaIncidencies,#titolTaulaIncidencies2 {
+#titolTaulaIncidencies,
+#titolTaulaIncidencies2,
+#titolTaulaIncidencies3 {
     background-color: white;
 }
 
@@ -102,11 +120,12 @@ a {
 .campIncidenciaAccio,
 .campIncidenciaDescripcio,
 .campIncidenciaTecnic,
+.campTempsEmprat,
 .botoEditar {
     margin-bottom: 0;
     padding-top: 15px;
     padding-bottom: 15px;
-    
+
 }
 
 .campIncidencia {
@@ -129,6 +148,10 @@ a {
     grid-area: tecnic;
 }
 
+.campTempsEmprat {
+    grid-area: temps;
+}
+
 .botoEditar {
     grid-area: editar;
     margin-top: 16px;
@@ -141,7 +164,9 @@ a {
 
 
 
-#titolTaulaIncidencies *,#titolTaulaIncidencies2 * {
+#titolTaulaIncidencies *,
+#titolTaulaIncidencies2 *,
+#titolTaulaIncidencies3 * {
 
     padding-top: 10px;
     padding-bottom: 10px;
@@ -159,8 +184,6 @@ a {
     max-width: 768px;
     grid-area: desc;
 }
-
-
 
 #grid {
     width: 95%;
@@ -182,28 +205,35 @@ a {
         width: 50%;
     }
 
-    #taulaIncidencies,#taulaIncidencies2 {
+    #taulaIncidencies,
+    #taulaIncidencies2,
+    #taulaIncidencies3 {
         width: 70%;
 
     }
 
-    #taulaIncidencies *,#taulaIncidencies2 * {
+    #taulaIncidencies *,
+    #taulaIncidencies2 *,
+    #taulaIncidencies3 * {
         color: black;
     }
 
-    #titolTaulaIncidencies>*, #titolTaulaIncidencies2>* {
+    #titolTaulaIncidencies>*,
+    #titolTaulaIncidencies2>*,
+    #titolTaulaIncidencies3>* {
         color: white;
     }
-    #titolTaulaIncidencies{
+
+    #titolTaulaIncidencies {
         position: sticky;
         top: 0;
     }
-    
+
     .incidencia {
         background-color: rgb(185, 183, 183);
         margin-top: auto;
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr ;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr;
         grid-template-areas: 'id dep desc prior data tecnic ';
         border-bottom: 1px solid black;
 
@@ -214,8 +244,15 @@ a {
         background-color: rgb(185, 183, 183);
         margin-top: auto;
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr ;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
         grid-template-areas: 'id dep desc prior data ';
+        border-bottom: 1px solid black;
+
+    }
+
+    .incidencia3 {
+        background-color: rgb(185, 183, 183);
+        margin-top: auto;
         border-bottom: 1px solid black;
 
     }
@@ -223,15 +260,22 @@ a {
     #titolTaulaIncidencies,
     .incidencia {
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr ;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr;
         grid-template-areas: 'id dep desc prior data tecnic ';
     }
 
     #titolTaulaIncidencies2,
     .incidencia2 {
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 2fr 2fr ;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
         grid-template-areas: 'id dep desc prior data ';
+    }
+
+    #titolTaulaIncidencies3,
+    .incidencia3 {
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr ;
+        grid-template-areas: 'id dep desc prior data temps ';
     }
 
     .campIncidenciaDescripcio,
@@ -242,7 +286,7 @@ a {
     .table {
         margin-left: auto;
         margin-right: auto;
-        max-width:45%;
+        max-width: 85%;
     }
 }
 
@@ -270,7 +314,8 @@ input.princ {
 }
 
 
-#taulaIncidencies *,#taulaIncidencies2 {
+#taulaIncidencies *,
+#taulaIncidencies2 {
     color: black;
 }
 
@@ -297,12 +342,6 @@ input.princ {
     margin-right: auto;
 }
 
-.menuSuperior {
-    position: sticky;
-    margin-right: 10px;
-    top: 10px;
-    text-align: right;
-}
 
 .logTit {
     width: 80%;
@@ -360,10 +399,10 @@ btn-primary {
 
 .cercar>img {
     position: relative;
-    height:25px;
+    height: 25px;
 }
 
-.consul>input{
+.consul>input {
     display: inline-block;
     width: 25%;
 }
@@ -377,14 +416,17 @@ btn-primary {
     position: relative;
     left: 300px;
 }
-#enviaFiltre{
+
+#enviaFiltre {
     padding-bottom: 1px;
-    padding-top:1px;
+    padding-top: 1px;
 }
-#formFiltre{
+
+#formFiltre {
     margin-bottom: 1%;
 }
-#sort{
+
+#sort,#grup {
     max-width: 20%;
     margin-left: auto;
     margin-right: auto;
@@ -400,63 +442,83 @@ btn-primary {
 .idAMostrar {
     size: xxL;
 }
-.cet{
+
+.cet {
     margin-top: 1%;
     text-align: center;
     margin-bottom: 3%;
 }
 
-.col-12{
+.col-12 {
     width: 80%;
     position: relative;
     right: 180px;
     top: 20px;
-   
+
 }
-#formulari{
-    max-width:70%;
+
+.formulari {
+    max-width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
-#formulari,.form-group{
+
+.formulari,
+.form-group {
     margin-left: auto;
     margin-right: auto;
 
 }
-#cercaInc{
-    margin-bottom:1%;
+
+#cercaInc {
+    margin-bottom: 1%;
 }
 
-.tab{
+.tab {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
-.main{
+
+.main {
     margin-top: 20px;
 }
 
-.correo{
+.correo {
     width: 30%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-.c{
+
+.c {
     margin-bottom: 1%;
 }
+
 .correo>img {
     position: relative;
     height: 25px;
 }
-.tornar{
+
+.tornar {
     position: relative;
     left: 47%;
-    
+
 }
-.chart{
-    max-width: 50%;
+
+.chart {
+    max-width: 35%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2%;
+}
+
+.completada {
+    background-color: #A5ED84;
+}
+
+.completada:hover {
+    background-color: #7fe450;
+
 }

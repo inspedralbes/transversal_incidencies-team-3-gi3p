@@ -156,5 +156,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //$_SESSION["hola"] = "a";
 include "modals/modal.php";
 ?>
-<footer> <?php include_once "footer.php"; ?></footer>
 </html>

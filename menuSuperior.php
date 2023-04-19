@@ -16,7 +16,7 @@ $resultado = $sentencia->get_result();
 $nombre = $resultado->fetch_assoc();
 ?>
 
-<nav class="navbar navbar-dark bg-primary <?php include "selectorUser.php" ?>">
+<nav class="menuSup navbar navbar-dark bg-primary <?php include "selectorUser.php" ?>">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
       <img src="img/logo_pedralbes.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
@@ -38,7 +38,7 @@ $nombre = $resultado->fetch_assoc();
           <a class="nav-link" aria-current="page" href="formulario.php">Crear Incidència</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="incidenciesUsuari.php">Veure les meves incidencies</a>
+          <a class="nav-link" aria-current="page" href="incidenciesUsuari.php">Veure les meves incidències</a>
         </li>
         <?php if ($nombre["tipo_User"] < 2) { ?>
           <li class="nav-item">
@@ -48,6 +48,16 @@ $nombre = $resultado->fetch_assoc();
         <?php if ($nombre["tipo_User"] < 3) { ?>
           <li class="nav-item">
             <a href="crearActuacion.php"><span class="nav-link">Registrar actuació</a>
+          </li>
+        <?php } ?>
+        <?php if ($nombre["tipo_User"] < 3) { ?>
+          <li class="nav-item">
+            <a href="chartDepartament_Temps.php"><span class="nav-link">Consultar consum per departament</a>
+          </li>
+        <?php } ?>
+        <?php if ($nombre["tipo_User"] < 3) { ?>
+          <li class="nav-item">
+            <a href="chartObert_tecnic.php"><span class="nav-link">Informe dels tecnics</a>
           </li>
         <?php } ?>
         <li>

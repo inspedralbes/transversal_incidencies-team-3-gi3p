@@ -16,30 +16,60 @@ $tempsDeps = $resultado->fetch_all(MYSQLI_ASSOC);
 
 $dades=[];
 $noms=[];
+$Nincidencies=[];
 foreach ($tempsDeps as $temps){
   array_push($noms,$temps["nom"]);
   array_push($dades,$temps["Temps emprat per departament"]);
-
+  array_push($Nincidencies, $temps["Numero d'incidencies"]);
 }
 $jsnoms=json_encode($noms);
 $jsdades=json_encode($dades);
+$jsnIncidencies=json_encode($Nincidencies);
 ?>
 <body>
+<h1 style="text-align: center"><b>Consulta per departament</b></h1>
+
 <div class="chart">
   <canvas id="myChart"></canvas>
+  <br>
 </div>
-
+<div class="chart">
+  <canvas id="IncidenciesDep"></canvas>
+  <br>
+  <br>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('myChart');
-  new Chart(ctx, {
+  const ctx2 = document.getElementById('myChart');
+  new Chart(ctx2, {
     type: 'pie',
     data: {
       labels: <?php echo $jsnoms ?>,
       datasets: [{
         label: 'Temps emprat',
         data: <?php echo $jsdades ?>,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+<script>
+  const ctx = document.getElementById('IncidenciesDep');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo $jsnoms ?>,
+      datasets: [{
+        label: 'Numero incidencies',
+        data: <?php echo $jsnIncidencies ?>,
         borderWidth: 1
       }]
     },

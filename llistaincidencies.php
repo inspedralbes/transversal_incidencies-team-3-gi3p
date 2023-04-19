@@ -1,22 +1,31 @@
 <?php
 
-if(!isset($_POST['sort'])){
+if (!isset($_POST['sort'])) {
     $sort = "TIPO_PRIORITAT.idPrior DESC";
+    $sort2 = 3;
     $_POST["sort"] = $sort;
 }
 
 switch ($_POST['sort']) {
     case 'fil1':
         $sort = "INCIDENCIA.idInc";
+        $sort2 = 1;
         break;
     case 'fil2':
         $sort = "DEPARTAMENT.idDep";
+        $sort2 = 2;
         break;
     case 'fil3':
         $sort = "TIPO_PRIORITAT.idPrior DESC";
+        $sort2 = 3;
         break;
     case 'fil4':
         $sort = "USUARIO.id_User DESC";
+        $sort2 = 4;
+        break;
+    case 'fil5':
+        $sort = "INCIDENCIA.dataFi DESC";
+        $sort2 = 5;
         break;
 }
 
@@ -47,18 +56,29 @@ include_once "menuSuperior.php";
     <div class="main">
 
         <header id="containerTitol">
-            <h1 id="titolPrincipal"><b>Incidències</b></h1>
+            <h1><b>Incidències</b></h1>
         </header>
 
         <form action="./llistaincidencies.php" method="post" id="formFiltre">
             <label for="sort">Ordenar per:</label>
             <select id="sort" class="form-select form-select-sm" aria-label=".form-select-sm example" name="sort">
-                <option value="fil1">Id</option>
-                <option value="fil2">Departament</option>
-                <option value="fil3" selected>Prioritat</option>
-                <option value="fil4">Tècnic</option>
+                <option value="fil1" <?php if ($sort2 === 1) {
+                    echo "selected";
+                } ?>>Id</option>
+                <option value="fil2" <?php if ($sort2 === 2) {
+                    echo "selected";
+                } ?>>Departament</option>
+                <option value="fil3" <?php if ($sort2 === 3) {
+                    echo "selected";
+                } ?>>Prioritat</option>
+                <option value="fil4" <?php if ($sort2 === 4) {
+                    echo "selected";
+                } ?>>Tècnic</option>
+                <option value="fil5" <?php if ($sort2 === 5) {
+                    echo "selected";
+                } ?>>Completades</option>
             </select>
-            <input id="enviaFiltre" class="btn btn-primary <?php include "selectorUser.php"?>" type="submit">
+            <input id="enviaFiltre" class="btn btn-primary <?php include "selectorUser.php" ?>" type="submit">
         </form>
 
         <div id="taulaIncidencies">
@@ -76,45 +96,47 @@ include_once "menuSuperior.php";
             $incidencies = $resultado->fetch_all(MYSQLI_ASSOC);
 
             foreach ($incidencies as $incidencia) { ?>
-            <a data-bs-toggle="modal"
-                        data-bs-target="#modalIncidencies<?php echo $incidencia["idInc"] ?>">
-                <div class="incidencia <?php echo $incidencia["PRIOR"] ?> ">
-                
-                    <p class="campIncidenciaId">
-                        <?php echo $incidencia["idInc"] ?>
-                    </p>
-                    <p class="campIncidenciaDep">
-                        <?php echo $incidencia["DEPT"] ?>
-                    </p>
-                    <p class="campIncidenciaDescripcio">
-                        <?php echo $incidencia["descripcio"] ?>
-                    </p>
-                    <p class="campIncidenciaPrio">
-                        <?php
-                        if (empty($incidencia["prioritat"])) {
-                            echo "Sense assignar";
-                        } else {
-                            echo $incidencia["PRIOR"];
-                        }
-                        ?>
-                    </p>
-                    <p class="campIncidenciaData">
-                        <?php echo $incidencia["data"] ?>
-                    </p>
-                    <p class="campIncidenciaTecnic">
-                        <?php
+                <a data-bs-toggle="modal" data-bs-target="#modalIncidencies<?php echo $incidencia["idInc"] ?>">
+                    <div class="incidencia <?php if (empty($incidencia["dataFi"])) {
+                        echo $incidencia["PRIOR"];
+                    } else {
+                        echo "completada";
+                    } ?> ">
+                        <p class="campIncidenciaId">
+                            <?php echo $incidencia["idInc"] ?>
+                        </p>
+                        <p class="campIncidenciaDep">
+                            <?php echo $incidencia["DEPT"] ?>
+                        </p>
+                        <p class="campIncidenciaDescripcio">
+                            <?php echo $incidencia["descripcio"] ?>
+                        </p>
+                        <p class="campIncidenciaPrio">
+                            <?php
+                            if (empty($incidencia["prioritat"])) {
+                                echo "Sense assignar";
+                            } else {
+                                echo $incidencia["PRIOR"];
+                            }
+                            ?>
+                        </p>
+                        <p class="campIncidenciaData">
+                            <?php echo $incidencia["data"] ?>
+                        </p>
+                        <p class="campIncidenciaTecnic">
+                            <?php
 
-                        if (empty($incidencia["tecnic"])) {
-                            echo "Sense assignar";
-                        } else {
-                            echo $incidencia["nomComplet"];
-                        }
-                        ?>
-                    </p>
-                    
-                </div>
+                            if (empty($incidencia["tecnic"])) {
+                                echo "Sense assignar";
+                            } else {
+                                echo $incidencia["nomComplet"];
+                            }
+                            ?>
+                        </p>
+
+                    </div>
                 </a>
-                    <?php include("modals/modalActualitzarIncidencia.php") ?>
+                <?php include("modals/modalActualitzarIncidencia.php") ?>
 
             <?php } ?>
 

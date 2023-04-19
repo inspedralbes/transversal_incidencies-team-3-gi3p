@@ -19,7 +19,7 @@ include_once "menuSuperior.php"; ?>
         <div class="body">
 
             <header id="containerTitol">
-                <h1 id="titolPrincipal"><b>INCIDENCIES PEDRALBES</b></h1>
+                <h1 id="titolPrincipal"><b>INCIDÈNCIES PEDRALBES</b></h1>
             </header>
 
             <form action="consultar.php" method="get">
@@ -34,14 +34,20 @@ include_once "menuSuperior.php"; ?>
                 <a href="formulario.php">
                     <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
                         <img src="./img/add.png">
-                        <h2>Crear<br> incidencia</h2>
+                        <h2>Crear<br> incidència</h2>
+                    </div>
+                </a>
+                <a href="incidenciesUsuari.php">
+                    <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
+                        <img src="./img/mine.png">
+                        <h2>Les Meves<br>incidències </h2>
                     </div>
                 </a>
                 <?php if ($_SESSION["tipoUser"] < 2) { ?>
                     <a href="llistaincidencies.php">
                         <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
                             <img src="./img/list.png">
-                            <h2>Llistar<br> incidencia</h2>
+                            <h2>Llistar<br> incidència</h2>
                         </div>
                     </a>
                 <?php } ?>
@@ -51,7 +57,7 @@ include_once "menuSuperior.php"; ?>
                     <a href="crearActuacion.php">
                         <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
                             <img src="./img/write.png">
-                            <h2>Registrar<br> actuacio</h2>
+                            <h2>Registrar<br> actuació</h2>
                         </div>
                     </a>
                 <?php } ?>
@@ -64,19 +70,15 @@ include_once "menuSuperior.php"; ?>
                         </div>
                     </a>
 
-                    <a href="crearActuacion.php">
+                    <a href="chartObert_tecnic.php">
                         <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
                             <img src="./img/informeTecnic.png">
-                            <h2>Consulta<br> per tècnic</h2>
+                            <h2>Informe<br> dels tècnics</h2>
                         </div>
                     </a>
-                    <a href="incidenciesUsuari.php">
-                        <div class="btn btn-primary ml-2 tarjeta <?php include "selectorUser.php" ?>">
-                            <img src="./img/informeTecnic.png">
-                            <h2>Meves<br>incidencies </h2>
-                        </div>
-                    </a>
+                    
                 <?php } ?>
+        
             </div>
         </div>
     </div>
